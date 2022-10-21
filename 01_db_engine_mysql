@@ -37,12 +37,12 @@ vault read database/creds/vault-demo-app
 vault read database/creds/vault-demo-app-long
 
 
-vault list sys/leases/lookup/database/creds/vault-demo-app
+vault list sys/leases/lookup/database/creds/vault-demo-app-long
 # get lease ID and store it as env variable
-LEASE_ID=$(vault list -format=json sys/leases/lookup/database/creds/vault-demo-app | jq -r ".[0]")
+LEASE_ID=$(vault list -format=json sys/leases/lookup/database/creds/vault-demo-app-long | jq -r ".[0]")
 
 # renew lease
-vault lease renew database/creds/readonly/$LEASE_ID
+vault lease renew database/creds/vault-demo-app-long/$LEASE_ID
 
 #revoke credentials
-vault lease revoke database/creds/readonly/$LEASE_ID
+vault lease revoke database/creds/vault-demo-app-long/$LEASE_ID
